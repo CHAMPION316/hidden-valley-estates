@@ -24,11 +24,11 @@ app.listen(3000, () => {
     }
 );
 
-
 // Using routers for user and authentication routes
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter)
 
+// Global error-handling middleware for sending standardized JSON error responses.
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
