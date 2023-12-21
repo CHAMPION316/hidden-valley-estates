@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
 	// State to manage form data, error messages, and loading state
 	const [formData, setFormData] = useState({});
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const navigate = useNavigate();
 
 	// Function to handle changes in form input fields
 	const handleChange = (e) => {
@@ -46,8 +47,9 @@ export default function SignUp() {
 			// Stop loading and clear error if successful
 			setLoading(false);
 			setError(null);
+			navigate('/sign-in');
 		} catch (error) {
-			// Stop loading set error if an exceptio occurs
+			// Stop loading set error if an exception occurs
 			setLoading(false);
 			setError(error.message);
 		}
